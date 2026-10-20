@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar de Golpe — Verifique antes de cair</title>
+<style>
+:root{--bg:#0a0e14;--card:#121826;--gold:#d4a24e;--red:#e5534b;--green:#3ecf8e;--txt:#e8e2d6;--mut:#8b93a3}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Georgia,'Times New Roman',serif}
+body{background:var(--bg);color:var(--txt);line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:32px 20px 60px}
+h1{font-size:34px;letter-spacing:.5px;line-height:1.15}
+h1 span{color:var(--gold)}
+.tag{display:inline-block;margin:14px 0 8px;padding:4px 12px;border:1px solid var(--red);border-radius:20px;color:var(--red);font-size:12px;letter-spacing:2px}
+.sub{color:var(--mut);font-size:16px;margin:12px 0 26px}
+.card{background:var(--card);border:1px solid #232c40;border-radius:14px;padding:22px;margin-top:14px}
+.card h3{font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+label{display:block;font-size:13px;color:var(--mut);margin:14px 0 5px}
+input,select,textarea{width:100%;background:#0d1320;border:1px solid #2a3450;color:var(--txt);padding:11px 12px;border-radius:8px;font-size:15px;font-family:inherit}
+textarea{min-height:90px;resize:vertical}
+.note{font-size:12px;color:var(--mut);margin-top:4px}
+.btn{width:100%;margin-top:22px;background:var(--gold);color:#111;border:none;padding:15px;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer;letter-spacing:.5px}
+.btn:hover{opacity:.92}
+.steps{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.step{flex:1;min-width:150px;background:#0d1320;border:1px solid #2a3450;border-radius:10px;padding:12px;font-size:13px}
+.step b{color:var(--gold);display:block;font-size:15px;margin-bottom:4px}
+.aviso{margin-top:18px;font-size:12.5px;color:var(--mut);border-left:3px solid var(--gold);padding-left:12px}
+.hidden{display:none}
+#ok{text-align:center;padding:40px 10px}
+#ok h2{color:var(--green);font-size:24px;margin-bottom:10px}
+footer{margin-top:36px;text-align:center;font-size:12px;color:#555f70}
+</style>
+</head>
+<body><div class="wrap">
+<span class="tag">PESQUISA ACADÊMICA · PRODUCT DISCOVERY</span>
+<h1>RADAR DE <span>GOLPE</span></h1>
+<p class="sub">A mensagem chegou. O coração acelerou. <b>"Mãe, é golpe?"</b><br>Antes de clicar, pagar ou responder: <b>verifique.</b></p>
+
+<div class="card">
+<h3>Como funciona</h3>
+<div class="steps">
+<div class="step"><b>1. Cole</b>A mensagem suspeita que você recebeu no formulário abaixo.</div>
+<div class="step"><b>2. Analisamos</b>Um analista humano + IA examinam os sinais do golpe.</div>
+<div class="step"><b>3. Você respira</b>Recebe o veredito: golpe, suspeito ou seguro — com o motivo.</div>
+</div>
+</div>
+
+<div class="card" id="formcard">
+<h3>Participe da validação (2 minutos)</h3>
+<form id="f" action="https://formsubmit.co/clebsoncamposdearaujo@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="RADAR-DE-GOLPE">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="text" name="nome" placeholder="Seu primeiro nome ou apelido" required>
+<label>Perfil</label>
+<select name="perfil" required>
+<option value="">Selecione…</option>
+<option>Estudante universitário</option>
+<option>Trabalhador(a)</option>
+<option>Aposentado(a)</option>
+<option>Dona de casa</option>
+<option>Outro</option>
+</select>
+<label>Nos últimos 6 meses, com que frequência você recebeu mensagens suspeitas de golpe no WhatsApp? (falso parente, boleto falso, prêmio, suporte falso…)</label>
+<select name="frequencia" required>
+<option value="">Selecione…</option>
+<option>Todas as semanas</option>
+<option>Algumas vezes por mês</option>
+<option>Uma ou duas vezes</option>
+<option>Nunca recebi</option>
+</select>
+<label>Na última vez que recebeu uma mensagem suspeita, o que você fez?</label>
+<select name="acao" required>
+<option value="">Selecione…</option>
+<option>Ignorei e apaguei</option>
+<option>Perguntei pra alguém da família/amigo</option>
+<option>Procurei na internet antes de responder</option>
+<option>Cliquei no link / paguei / passei dados (cai)</option>
+<option>Não lembro</option>
+</select>
+<label>Se você tiver uma mensagem suspeita salva, cole aqui (opcional — remova nomes e dados pessoais antes)</label>
+<textarea name="mensagem" placeholder="Ex.: 'Oi filho, é a mamãe, troquei de número…'"></textarea>
+<p class="note">⚠️ Não cole senhas, senhas de banco ou documentos. Só a mensagem em si.</p>
+<label>Se existisse um serviço gratuito que respondesse em minutos se uma mensagem é golpe ou não, com o motivo, você usaria? (0 = jamais, 10 = com certeza)</label>
+<input type="number" name="usaria" min="0" max="10" required>
+<label>Quanto você confiaria na resposta desse serviço? (0 = nada, 10 = totalmente)</label>
+<input type="number" name="confianca" min="0" max="10" required>
+<label>Você pagaria R$ 5/mês por isso para proteger sua família?</label>
+<select name="pagaria" required>
+<option value="">Selecione…</option>
+<option>Sim</option>
+<option>Talvez</option>
+<option>Não</option>
+</select>
+<label>Você recomendaria para um familiar mais velho, como sua mãe ou avó? (0 = não, 10 = com certeza)</label>
+<input type="number" name="nps" min="0" max="10" required>
+<label>E-mail ou WhatsApp para receber o veredito da sua mensagem (opcional)</label>
+<input type="text" name="contato" placeholder="seu@email.com ou (11) 9 9999-9999">
+<button class="btn" type="submit">ENVIAR MINHA RESPOSTA →</button>
+</form>
+</div>
+
+<div class="card hidden" id="ok">
+<h2>✔ Recebido!</h2>
+<p>Obrigado por participar. Sua resposta já está na pesquisa.<br>Se você colou uma mensagem suspeita, o veredito chega no seu contato em até 24h.</p>
+</div>
+
+<div class="aviso">Este formulário faz parte de um trabalho acadêmico de <b>Product Discovery</b> (validação de ideias de produto com usuários reais). Nenhum dado é vendido ou compartilhado; as respostas alimentam apenas a análise da pesquisa.</div>
+<footer>Radar de Golpe · Pesquisa de validação · 2026</footer>
+</div>
+<script>
+// formsubmit redireciona por padrão; capturamos via AJAX pra agradecer sem sair da página
+document.getElementById('f').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn = this.querySelector('.btn');
+  btn.textContent = 'ENVIANDO…'; btn.disabled = true;
+  try {
+    const r = await fetch('https://formsubmit.co/ajax/clebsoncamposdearaujo@gmail.com', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(Object.fromEntries(new FormData(this)))
+    });
+    if (r.ok) {
+      document.getElementById('formcard').classList.add('hidden');
+      document.getElementById('ok').classList.remove('hidden');
+      window.scrollTo({top:0, behavior:'smooth'});
+    } else { btn.textContent = 'ERRO — TENTE DE NOVO'; btn.disabled = false; }
+  } catch(err) {
+    // fallback: envio classico
+    this.submit();
+  }
+});
+</script>
+</body></html>
