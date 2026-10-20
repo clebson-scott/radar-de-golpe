@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Radar de Golpe — Trabalho de Metodologias Ágeis, Geais e Validação de Produtos</title>
+<style>
+@page{margin:2.2cm}
+:root{--ink:#1a1a1a;--gold:#8a6d2f;--soft:#f6f3ec}
+*{box-sizing:border-box}
+body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);line-height:1.62;margin:0;background:#fff}
+.page{max-width:820px;margin:0 auto;padding:48px 56px}
+.capa{text-align:center;padding:110px 30px;border:2px solid var(--gold);margin:30px 0}
+.capa h1{font-size:31px;margin:18px 0 6px}
+.capa h2{font-size:16px;font-weight:normal;color:#555;margin:0 0 26px}
+.capa .curso{font-size:14px;color:#555}
+.kicker{text-align:center;letter-spacing:4px;font-size:11px;color:var(--gold);text-transform:uppercase}
+h2.sec{font-size:22px;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-top:44px}
+h3{font-size:16px;margin-top:26px}
+p{font-size:15px;text-align:justify}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:var(--soft);text-align:left;padding:9px 12px;border:1px solid #ddd}
+td{padding:9px 12px;border:1px solid #ddd;vertical-align:top}
+.quote{border-left:3px solid var(--gold);margin:18px 0;padding:6px 18px;font-style:italic;color:#333;background:var(--soft)}
+.crit{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
+.crit div{flex:1;min-width:170px;border:1px solid #ddd;border-radius:8px;padding:14px;font-size:13.5px}
+.crit b{display:block;color:var(--gold);margin-bottom:6px;font-size:14.5px}
+ol,ul{font-size:15px}
+li{margin:7px 0}
+.box{background:var(--soft);border:1px solid #e2d9c4;border-radius:10px;padding:18px 22px;margin:18px 0;font-size:14px}
+.footer-note{font-size:12px;color:#777;text-align:center;margin-top:50px}
+@media print{.page{padding:0}}
+</style>
+</head>
+<body><div class="page">
+
+<div class="kicker">Trabalho de Metodologias Ágeis, Geais e Validação de Produtos</div>
+<div class="capa">
+<div class="curso">UNIFECAF · Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</div>
+<h1>RADAR DE GOLPE</h1>
+<h2>Do "é golpe, mãe?" ao veredito em minutos:<br>validação de um produto anti-golpe antes de construir uma linha de código</h2>
+<div class="curso"><b>Aluno:</b> Clebson Scott &nbsp;·&nbsp; <b>Data:</b> Outubro/2026<br><b>Tema:</b> Product Discovery e Validação de Produtos</div>
+</div>
+
+<h2 class="sec">1. Introdução — por que validar antes de construir</h2>
+<p>A maioria dos produtos digitais falha. E ela não falha por falta de tecnologia: falha por construir, durante meses, uma solução que ninguém precisava. As metodologias modernas de descoberta de produto (Product Discovery) propõem a inversão dessa ordem: <b>primeiro se valida o problema e o valor com pessoas reais, depois se constrói.</b></p>
+<p>Este trabalho documenta o processo completo de descoberta e validação de uma ideia de produto digital — <b>Radar de Golpe</b> — usando experimento real, com métricas e critérios de decisão definidos <i>antes</i> da coleta dos dados (pré-registro), de modo a eliminar o viés de confirmação. A pergunta que guia o trabalho não é "a ideia funciona?", e sim: <b>"as pessoas precisam disso o suficiente para usarem de novo e recomendarem?"</b></p>
+
+<h2 class="sec">2. O problema</h2>
+<p>Golpes por WhatsApp e PIX viraram parte da rotina do brasileiro: o falso parente que "trocou de número", o boleto falso que chega na véspera do vencimento, o prêmio que nunca existiu, o falso suporte do banco. O momento do golpe é emocional e solitário: a pessoa recebe a mensagem, o coração acelera, e ela precisa decidir <b>em segundos</b> — mas não tem com quem checar.</p>
+<div class="quote">"Minha mãe me manda print de quase toda mensagem estranha que recebe. Eu virei o antivírus da família." — relato comum que motivou esta pesquisa.</div>
+<p>As campanhas de conscientização existem, mas são genéricas e chegam antes do evento; no momento exato da decisão, a pessoa está sozinha. <b>Há uma lacuna entre a campanha de conscientização e a decisão em tempo real.</b></p>
+
+<h2 class="sec">3. Metodologia aplicada</h2>
+<p>O trabalho aplica o ciclo de Product Discovery em quatro camadas, todas documentadas com artefatos verificáveis:</p>
+<table>
+<tr><th>Etapa</th><th>Ferramenta/Método</th><th>Artefato produzido</th></tr>
+<tr><td>Descoberta do problema</td><td>Observação + entrevistas informais + pesquisa secundária</td><td>Tabela de dores (seção 2)</td></tr>
+<tr><td>Formulação de hipóteses</td><td>Hipóteses testáveis com métricas (Lean)</td><td>H1, H2, H3 (seção 4)</td></tr>
+<tr><td>Experimento</td><td>MVP Concierge: serviço manual assistido por IA + landing page real</td><td>radar-de-golpe (GitHub Pages) + formulário</td></tr>
+<tr><td>Análise e decisão</td><td>Critérios pré-registrados de decisão (perseverar/ajustar/pivotar/abandonar)</td><td>Seções 7 e 9</td></tr>
+</table>
+
+<h3>3.1 Por que MVP Concierge (e não um bot pronto)</h3>
+<p>No MVP Concierge, o serviço é entregue manualmente atrás de uma fachada de produto real. Ele permite validar <b>valor</b> antes de investir em <b>engenharia</b>: se as pessoas não usam nem a versão manual e gratuita, não usariam a versão automatizada. É o experimento mais barato que preserva a pergunta essencial: "isso vale o tempo do usuário?".</p>
+
+<h3>3.2 O papel da Inteligência Artificial no processo</h3>
+<p>IA foi utilizada em três pontos do método, sempre como <b>ferramenta assistida por decisão humana</b>: (1) scaffolding dos artefatos de produto (landing page, formulário, canais de coleta); (2) tabulação automática das respostas coletadas, reduzindo erro de transcrição; (3) apoiar a análise de mensagens suspeitas submetidas (com revisão humana do aluno antes de qualquer resposta ser enviada a um participante). Conforme o princípio central da disciplina: <b>a IA organiza e acelera o processo; pessoas reais validam o mercado.</b> A IA não substitui o usuário, o usuário valida o produto.</p>
+
+<h2 class="sec">4. A ideia e as hipóteses</h2>
+<p><b>Radar de Golpe</b> é um serviço onde a pessoa cola uma mensagem suspeita e recebe em minutos um veredito claro — <b>golpe, suspeito ou provavelmente seguro</b> — com o motivo em linguagem simples, indicando os sinais da fraude (urgência artificial, número desconhecido, link encurtado, pedido de pagamento por PIX, etc.).</p>
+<table>
+<tr><th>Hipótese</th><th>Enunciado testável</th><th>Métrica de teste</th></tr>
+<tr><td><b>H1 — Problema</b></td><td>Pessoas comuns recebem mensagens suspeitas com frequência e não têm onde verificá-las na hora.</td><td>≥60% dos respondentes receberam golpe nos últimos 6 meses E ≥1 "perguntou para alguém" como única opção de verificação.</td></tr>
+<tr><td><b>H2 — Solução</b></td><td>Um veredito rápido com motivo aumenta a confiança para decidir e seria usado de novo.</td><td>Intenção de uso média ≥7/10 E confiança na resposta ≥6/10.</td></tr>
+<tr><td><b>H3 — Disposição a pagar</b></td><td>O problema dói o suficiente para pagar por proteção familiar.</td><td>≥30% responderiam "Sim" ou "Talvez" a R$5/mês.</td></tr>
+</table>
+
+<h2 class="sec">5. O experimento (em execução)</h2>
+<p>Foi construída uma landing page real com formulário de validação (2 minutos de preenchimento), publicada em <b>https://clebson-scott.github.io/radar-de-golpe/</b>, com código aberto no repositório <b>github.com/clebson-scott/radar-de-golpe</b>. A página apresenta o serviço (o que será), coleta dados do problema (frequência e comportamento diante de mensagens suspeitas), permite colar uma mensagem real para análise (Concierge) e mede as três hipóteses.</p>
+<h3>5.1 Público e coleta</h3>
+<p>A coleta mínima exigida pela disciplina é de <b>5 usuários reais</b>. O público-alvo primário são colegas da própria instituição (compartilhamento do link no grupo da turma) e familiares de faixas etárias variadas — deliberadamente incluindo o público de maior risco (pais/avós), pois a hipótese central envolve proteção familiar. Cada resposta cai automaticamente, por e-mail, em uma base de tabulação própria.</p>
+<h3>5.2 As perguntas do formulário</h3>
+<ol>
+<li>Frequência de mensagens suspeitas nos últimos 6 meses (H1)</li>
+<li>Comportamento na última mensagem suspeita recebida (H1 — qual a "solução atual")</li>
+<li>Mensagem suspeita real (opcional) — material de análise Concierge</li>
+<li>Intenção de uso do serviço (0–10) (H2)</li>
+<li>Confiança na resposta do serviço (0–10) (H2)</li>
+<li>Disposição a pagar R$5/mês (H3)</li>
+<li>Recomendação para familiar mais velho (0–10) — NPS familiar</li>
+</ol>
+
+<h2 class="sec">6. Critérios de decisão (pré-registrados)</h2>
+<p><b>Definidos antes da coleta</b>, para eliminar viés de confirmação. Após ≥5 respostas válidas:</p>
+<div class="crit">
+<div><b>✅ PERSEVERAR</b>Média de intenção de uso ≥7 e NPS familiar ≥7; ≥3 participantes colaram mensagem real para análise. Seguir para protótipo automatizado.</div>
+<div><b>🔧 AJUSTAR</b>Intenção de uso alta (≥7), mas confiança na resposta &lt;6: o problema é crível, mas a solução precisa de sinal de autoridade (fontes oficiais, parcerias) antes de escalar.</div>
+<div><b>🔄 PIVOTAR</b>Intenção de uso baixa (&lt;7) mas dor presente (≥60% recebem golpes): o produto certo pode ser outro (ex.: bot de alerta para o grupo da família, em vez de consulta individual).</div>
+<div><b>⛔ ABANDONAR</b>&lt;2 dos respondentes relatam o problema na prática OU intenção média &lt;5: sem problema, sem produto.</div>
+</div>
+
+<h2 class="sec">7. Lean Canvas</h2>
+<table>
+<tr><th>Problema</th><td>1. Golpes por WhatsApp/PIX na rotina; 2. Decisão em segundos sem ajuda; 3. Solidão no momento do golpe<br><b>Soluções atuais:</b> perguntar a um familiar "antenado"; ignorar tudo (inclusive o que era verdade); campanhas genéricas</td></tr>
+<tr><th>Segmento</th><td>Adultos 30–70 que recebem mensagens suspeitas; famílias com "consultor informal de tecnologia"; adultos filhos de pais idosos</td></tr>
+<tr><th>Proposta de valor única</th><td><b>Veredito em minutos, com o motivo, antes de clicar ou pagar.</b> Sem jargão: "isso é golpe porque X, Y, Z"</td></tr>
+<tr><th>Solução</th><td>MVP Concierge (atual): análise manual + IA assistida. Futuro: bot no próprio WhatsApp com resposta automática</td></tr>
+<tr><th>Canais</th><td>Landing page → WhatsApp da família (boca a boca orgânico é o canal natural do segmento)</td></tr>
+<tr><th>Fluxo de receita</th><td>Gratuito para consultas individuais; plano família (R$5/mês) com alertas proativos e painel para os filhos monitorarem</td></tr>
+<tr><th>Estrutura de custos</th><td>Análise assistida por IA (baixo custo por consulta); hospedagem estática (custo zero)</td></tr>
+<tr><th>Métricas-chave</th><td>% de retorno (usou 2+ vezes), % que compartilha com familiar, intenção de uso, NPS familiar</td></tr>
+<tr><th>Vantagem injusta</th><td>Acúmulo de base de mensagens fraudulentas reais (a cada análise Concierge, o sistema aprende padrões que campanhas genéricas não têm)</td></tr>
+</table>
+
+<h2 class="sec">8. Value Proposition Canvas</h2>
+<h3>8.1 Perfil do cliente (o que ele quer, sente e faz)</h3>
+<table>
+<tr><th>Tarefas do cliente</th><td>Decidir rápido se uma mensagem é confiável; proteger pais/avós à distância; não parecer burro ao perguntar "de novo"</td></tr>
+<tr><th>Dores</th><td>Medo de cair no golpe; vergonha de perguntar; culpa se um familiar cair; sobrecarga de ser o "suporte técnico" da família</td></tr>
+<tr><th>Ganhos desejados</th><td>Resposta clara e rápida; segurança para os pais sem precisar monitorar todo dia; status de "quem resolve" na família</td></tr>
+</table>
+<h3>8.2 O produto (o que entregamos)</h3>
+<table>
+<tr><th>Aliviadores de dor</th><td>Veredito simples com motivo; disponível no momento exato da dúvida; anonimato (não precisa "reconhecer que não sabe")</td></tr>
+<tr><th>Criadores de ganho</th><td>Paz de espírito em minutos; plano família com alertas; print do veredito compartilhável no grupo da família ("não é golpe, é verdade" também é valioso)</td></tr>
+<tr><th>Produtos/serviços</th><td>Consulta individual gratuita (Concierge hoje, bot amanhã); plano família R$5/mês</td></tr>
+</table>
+
+<h2 class="sec">9. Resultados (a serem preenchidos com os dados reais)</h2>
+<p>A tabela abaixo será preenchida com as respostas reais coletadas pelo formulário em produção. Nenhum número é apresentado até que as respostas existam — este é o compromisso metodológico deste trabalho.</p>
+<table>
+<tr><th>Métrica</th><th>Meta (hipótese)</th><th>Resultado real</th></tr>
+<tr><td>Respostas válidas coletadas</td><td>≥5</td><td>____</td></tr>
+<tr><td>% que recebeu golpe nos últimos 6 meses</td><td>≥60%</td><td>____%</td></tr>
+<tr><td>Média de intenção de uso (0–10)</td><td>≥7</td><td>____</td></tr>
+<tr><td>Média de confiança na resposta (0–10)</td><td>≥6</td><td>____</td></tr>
+<tr><td>% dispostos a pagar R$5/mês (sim+talvez)</td><td>≥30%</td><td>____%</td></tr>
+<tr><td>NPS familiar médio (0–10)</td><td>≥7</td><td>____</td></tr>
+<tr><td>Mensagens reais submetidas p/ análise</td><td>≥3</td><td>____</td></tr>
+<tr><td><b>DECISÃO PRÉ-REGISTRADA ACIONADA</b></td><td>—</td><td>____ (perseverar/ajustar/pivotar/abandonar)</td></tr>
+</table>
+
+<h2 class="sec">10. Conclusão (a preencher após a análise)</h2>
+<p>Espaço reservado para: síntese dos dados, decisão acionada pelos critérios da seção 6, aprendizados do processo e próximos passos — ou o relato honesto de por que a ideia não merece investimento, se for o caso. A honestidade da análise é parte avaliada do método: um "abandonar" bem fundamentado vale mais que um "perseverar" vaidoso.</p>
+
+<h2 class="sec">Anexo A — Roteiro de entrevista de aprofundamento (pós-formulário)</h2>
+<ol>
+<li>Conte a última vez que recebeu uma mensagem suspeita. O que você sentiu antes de decidir?</li>
+<li>Quem você costuma chamar quando tem dúvida? Essa pessoa responde rápido?</li>
+<li>O que faria você confiar num veredito automático? O que te deixaria desconfiado dele?</li>
+<li>Se o serviço errasse uma vez, você usaria de novo? O que ele precisaria fazer para reconquistar sua confiança?</li>
+<li>Quanto do seu tempo você gastaria por mês para seus pais nunca caírem num golpe?</li>
+</ol>
+
+<h2 class="sec">Anexo B — Roteiro do vídeo de apresentação (máx. 4 minutos)</h2>
+<table>
+<tr><th>Tempo</th><th>Cena</th><th>Fala (resumo)</th></tr>
+<tr><td>0:00–0:25</td><td>Tela: WhatsApp com mensagem de golpe</td><td>"Todo brasileiro já recebeu isso. O golpe funciona porque a vítima está sozinha na hora da decisão."</td></tr>
+<tr><td>0:25–0:50</td><td>Problema</td><td>"Campanhas conscientizam antes. No momento do golpe, ninguém conscientiza. Apresento o problema com dados da validação."</td></tr>
+<tr><td>0:50–1:40</td><td>A ideia + método</td><td>"Radar de Golpe: cole a mensagem, receba o veredito com o motivo. Mas antes de construir o bot, eu validei — e mostro COMO: hipóteses, critérios pré-registrados, experimento real."</td></tr>
+<tr><td>1:40–2:40</td><td>Demonstração ao vivo</td><td>Mostrar a landing page real, submeter uma mensagem de golpe e o veredito chegando (print do e-mail).</td></tr>
+<tr><td>2:40–3:30</td><td>Resultados</td><td>Tabela da seção 9 preenchida com os dados reais dos participantes. "N respostas reais, média X..."</td></tr>
+<tr><td>3:30–4:00</td><td>Decisão e aprendizado</td><td>"Os critérios pré-registrados dizem: [perseverar/ajustar/pivotar/abandonar]. O maior aprendizado: [síntese]. Validar antes de construir é mais barato que construir antes de validar."</td></tr>
+</table>
+
+<h2 class="sec">Anexo C — Guia do README do case (repositório)</h2>
+<p>O repositório <b>github.com/clebson-scott/radar-de-golpe</b> contém a landing page de validação e servirá de base para o README do case: (1) o problema em uma frase; (2) a hipótese e o experimento; (3) os números reais da validação; (4) a decisão e o que vem depois; (5) como reproduzir (a página é estática e o código é aberto).</p>
+
+<h2 class="sec">Declaração de uso de Inteligência Artificial</h2>
+<div class="box">Em atenção à honestidade metodológica exigida pela disciplina, declara-se que ferramentas de IA foram utilizadas como <b>instrumento de execução assistida</b> neste trabalho: construção da landing page e do formulário, estruturação dos canvases e tabulação automática das respostas. <b>As decisões de produto (hipóteses, critérios, decisão final) e toda a coleta com usuários reais são do autor.</b> Nenhum dado de usuário foi inventado: os números da seção 9 advêm exclusivamente do formulário em produção, e a análise de mensagens suspeitas enviadas por participantes passou por revisão humana antes de qualquer resposta. A IA não validou o mercado — as pessoas reais validaram.</div>
+
+<p class="footer-note">Trabalho de Metodologias Ágeis, Geais e Validação de Produtos · UNIFECAF · Clebson Scott · Outubro/2026</p>
+</div></body></html>
